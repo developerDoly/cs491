@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO.Ports;
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        serial = new SerialPort(UNO, 9600); 
+        serial = new SerialPort(UNO_port, 9600); 
         serial.Open();
         
         rigidbody = GetComponent<Rigidbody2D>();
@@ -86,12 +87,12 @@ public class PlayerController : MonoBehaviour
     //This is much more performant, but dangerous so we have to careful and we should test for all cases.
     void FastRead()
     {
-        
+        /*
         
         // constructing a string from a char array, prefix it with some additional characters
         char[] chars = { 'a', 'b', 'c', 'd', '\0' };
         int length = chars.Length + 2;
-        string result = string.Create (length, chars, (Span<char> strContent, char[] charArray) = >
+        string result = string.Create (length, chars, (Span<char> strContent, char[] charArray) =>
         {
             strContent[0] = '0';
             strContent[1] = '1';
@@ -101,7 +102,8 @@ public class PlayerController : MonoBehaviour
             }
         });
 
-        Console.WriteLine(result);
+        Debug.Log(result);
+        */
         
     }
     
